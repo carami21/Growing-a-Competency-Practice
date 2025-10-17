@@ -2,6 +2,8 @@
 
 A comprehensive practice repository to master GitHub workflows and Git best practices.
 
+> 🚀 **New here?** Check out the [Quick Start Guide](QUICKSTART.md) to get started in 5 minutes!
+
 ## 📚 Table of Contents
 
 1. [Perfect Commits](#1-perfect-commits)
