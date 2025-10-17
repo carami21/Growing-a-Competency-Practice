@@ -1,2 +1,3 @@
-# Growing-a-Competency-Practice
-Short excercise repo to display skill practice
+# GitHub Competency Demo
+
+Run: `python3 hello.py`
