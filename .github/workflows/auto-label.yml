@@ -1,0 +1,64 @@
+# Example: Auto-label Issues
+#
+# This workflow automatically adds labels to new issues based on their title.
+# This is a simplified example for learning purposes.
+#
+# Learn more: https://docs.github.com/en/actions
+
+name: Auto Label Issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  label-issues:
+    name: Add Labels
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Label bug reports
+        if: contains(github.event.issue.title, '[BUG]')
+        run: |
+          echo "This issue appears to be a bug report"
+          echo "In a real workflow, this would add the 'bug' label"
+          echo "Issue #${{ github.event.issue.number }}"
+      
+      - name: Label feature requests
+        if: contains(github.event.issue.title, '[FEATURE]')
+        run: |
+          echo "This issue appears to be a feature request"
+          echo "In a real workflow, this would add the 'enhancement' label"
+          echo "Issue #${{ github.event.issue.number }}"
+      
+      - name: Label documentation issues
+        if: contains(github.event.issue.title, '[DOCS]')
+        run: |
+          echo "This issue appears to be about documentation"
+          echo "In a real workflow, this would add the 'documentation' label"
+          echo "Issue #${{ github.event.issue.number }}"
+      
+      - name: Label practice exercises
+        if: contains(github.event.issue.title, '[EXERCISE]')
+        run: |
+          echo "This issue appears to be a practice exercise suggestion"
+          echo "In a real workflow, this would add the 'enhancement' and 'good first issue' labels"
+          echo "Issue #${{ github.event.issue.number }}"
+
+# Note: This example uses echo statements for demonstration.
+# 
+# To actually add labels, you would need to:
+# 1. Use the GitHub API or an action like 'actions/github-script'
+# 2. Have appropriate permissions (GITHUB_TOKEN)
+# 3. Use proper API calls to add labels
+#
+# Example with github-script:
+# - uses: actions/github-script@v6
+#   with:
+#     script: |
+#       github.rest.issues.addLabels({
+#         owner: context.repo.owner,
+#         repo: context.repo.repo,
+#         issue_number: context.issue.number,
+#         labels: ['bug']
+#       })

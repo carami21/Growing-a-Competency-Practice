@@ -1,0 +1,81 @@
+# Example GitHub Actions Workflow
+#
+# This is a simple example workflow to demonstrate GitHub Actions.
+# It runs basic checks when pull requests are created.
+#
+# Learn more: https://docs.github.com/en/actions
+
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Job 1: Validate Markdown Files
+  validate-markdown:
+    name: Validate Markdown
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Check for broken links (placeholder)
+        run: |
+          echo "Checking markdown files..."
+          echo "In a real workflow, this would check for:"
+          echo "  - Broken links"
+          echo "  - Proper formatting"
+          echo "  - Valid markdown syntax"
+          echo ""
+          echo "All markdown files validated ✓"
+  
+  # Job 2: Spell Check (placeholder)
+  spell-check:
+    name: Spell Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Run spell checker (placeholder)
+        run: |
+          echo "Running spell check..."
+          echo "In a real workflow, this would check for:"
+          echo "  - Common spelling errors"
+          echo "  - Technical term consistency"
+          echo ""
+          echo "Spell check completed ✓"
+  
+  # Job 3: Welcome New Contributors
+  welcome:
+    name: Welcome Message
+    runs-on: ubuntu-latest
+    # Only run on first-time contributors
+    if: github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
+    
+    steps:
+      - name: Welcome new contributor
+        run: |
+          echo "🎉 Welcome to the Growing-a-Competency-Practice repository!"
+          echo "Thank you for your contribution!"
+          echo "A maintainer will review your PR soon."
+          echo ""
+          echo "While you wait, check out:"
+          echo "  - Our contributing guidelines: CONTRIBUTING.md"
+          echo "  - Our documentation: docs/"
+          echo ""
+          echo "Happy learning! 🚀"
+
+# Note: This is a simplified example for learning purposes.
+# A production workflow might include:
+#   - Actual linting (markdownlint, prettier)
+#   - Link checking (markdown-link-check)
+#   - Spell checking (cSpell, typos)
+#   - Automated labeling
+#   - Size checking
+#   - And more!
